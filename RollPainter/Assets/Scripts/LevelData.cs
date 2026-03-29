@@ -10,6 +10,7 @@ public class LevelData : ScriptableObject
 
     public Vector2Int startPosition;
 
+    // 用一维数组存储，但按二维逻辑使用
     public TileColor[] targetColors;
 
     public void Initialize()
@@ -25,9 +26,14 @@ public class LevelData : ScriptableObject
         }
     }
 
+    int GetIndex(int x, int z)
+    {
+        return z * width + x;
+    }
+
     public TileColor GetColor(int x, int z)
     {
-        int index = z * width + x;
+        int index = GetIndex(x, z);
 
         if (index < 0 || index >= targetColors.Length)
             return TileColor.None;
@@ -37,7 +43,7 @@ public class LevelData : ScriptableObject
 
     public void SetColor(int x, int z, TileColor color)
     {
-        int index = z * width + x;
+        int index = GetIndex(x, z);
 
         if (index >= 0 && index < targetColors.Length)
             targetColors[index] = color;

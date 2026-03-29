@@ -33,8 +33,7 @@ public class CubeRoll : MonoBehaviour
 
     }
 
-    public Dictionary<CubeFace, int> faceColors =
-        new Dictionary<CubeFace, int>();
+    public Dictionary<CubeFace, int> faceColors =new Dictionary<CubeFace, int>();
 
     void Start()
     {
@@ -43,10 +42,10 @@ public class CubeRoll : MonoBehaviour
 
         levelManager = FindObjectOfType<LevelManager>();
 
-        faceColors[CubeFace.Top] = 0;//√
-        faceColors[CubeFace.Front] = 1;//√
-        faceColors[CubeFace.Right] = 2;//√
-        faceColors[CubeFace.Back] = 3;//√
+        faceColors[CubeFace.Top] = 0;
+        faceColors[CubeFace.Front] = 1;
+        faceColors[CubeFace.Right] = 2;
+        faceColors[CubeFace.Back] = 3;
         faceColors[CubeFace.Left] = 4;
         faceColors[CubeFace.Bottom] = 5;
 

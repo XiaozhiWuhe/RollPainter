@@ -65,11 +65,11 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 7980b828558dcd04ba766ad3c91974a0, type: 2}
-  - {fileID: 2100000, guid: 771363fadd3afc94e903183005a87e59, type: 2}
-  - {fileID: 2100000, guid: 8593747edad6447408d5770e33473bb6, type: 2}
-  - {fileID: 2100000, guid: 53d3fd964c76ab249a3799c26ff2b9c8, type: 2}
-  - {fileID: 2100000, guid: ff094e30ce7fac64b9d3141bd32485d2, type: 2}
   - {fileID: 2100000, guid: de4d64141e8bc4a4cbe1517fced99ce8, type: 2}
+  - {fileID: 2100000, guid: ff094e30ce7fac64b9d3141bd32485d2, type: 2}
+  - {fileID: 2100000, guid: 53d3fd964c76ab249a3799c26ff2b9c8, type: 2}
+  - {fileID: 2100000, guid: 8593747edad6447408d5770e33473bb6, type: 2}
+  - {fileID: 2100000, guid: 771363fadd3afc94e903183005a87e59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9deb57229d97a43bbe5e30cf00d08d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialRotation: {x: 0, y: 0, z: 0, w: 0}
   rollDuration: 0.25
 --- !u!114 &4991526271836999151
 MonoBehaviour:

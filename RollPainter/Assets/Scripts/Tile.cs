@@ -37,7 +37,7 @@ public class Tile : MonoBehaviour
 
         if (color == TileColor.None)
         {
-            rend.sharedMaterial = defaultMaterial;
+            rend.material = defaultMaterial;
             return;
         }
 
@@ -45,7 +45,7 @@ public class Tile : MonoBehaviour
 
         if (index >= 0 && index < colorMaterials.Length)
         {
-            rend.sharedMaterial = colorMaterials[index];
+            rend.material = colorMaterials[index];
         }
     }
 }

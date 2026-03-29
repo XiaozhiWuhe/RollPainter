@@ -4,13 +4,11 @@ using UnityEngine;
 [CustomEditor(typeof(LevelData))]
 public class LevelDataEditor : Editor
 {
-    LevelData level;
-
-    TileColor paintColor = TileColor.Red;
+    LevelData data;
 
     public override void OnInspectorGUI()
     {
-        level = (LevelData)target;
+        data = (LevelData)target;
 
         DrawDefaultInspector();
 
@@ -18,58 +16,34 @@ public class LevelDataEditor : Editor
 
         if (GUILayout.Button("Initialize Grid"))
         {
-            level.Initialize();
+            data.Initialize();
         }
 
-        GUILayout.Space(10);
-
-        paintColor =
-            (TileColor)EditorGUILayout.EnumPopup("Paint Color", paintColor);
-
-        GUILayout.Space(10);
-
-        DrawGrid();
-    }
-
-    void DrawGrid()
-    {
-        if (level.targetColors == null)
+        if (data.targetColors == null)
             return;
 
-        for (int z = level.height - 1; z >= 0; z--)
+        GUILayout.Space(10);
+        GUILayout.Label("Level Pattern");
+
+        for (int z = data.height - 1; z >= 0; z--)
         {
             GUILayout.BeginHorizontal();
 
-            for (int x = 0; x < level.width; x++)
+            for (int x = 0; x < data.width; x++)
             {
-                TileColor color = level.GetColor(x, z);
+                TileColor color = data.GetColor(x, z);
 
-                GUI.backgroundColor = GetColor(color);
+                TileColor newColor =
+                    (TileColor)EditorGUILayout.EnumPopup(color, GUILayout.Width(70));
 
-                if (GUILayout.Button("", GUILayout.Width(40), GUILayout.Height(40)))
+                if (newColor != color)
                 {
-                    level.SetColor(x, z, paintColor);
+                    data.SetColor(x, z, newColor);
+                    EditorUtility.SetDirty(data);
                 }
             }
 
             GUILayout.EndHorizontal();
-        }
-
-        GUI.backgroundColor = Color.white;
-    }
-
-    Color GetColor(TileColor c)
-    {
-        switch (c)
-        {
-            case TileColor.White: return Color.white;
-            case TileColor.Yellow: return Color.yellow;
-            case TileColor.Red: return Color.red;
-            case TileColor.Orange: return new Color(1f, 0.5f, 0f);
-            case TileColor.Green: return Color.green;
-            case TileColor.Blue: return Color.blue;
-
-            default: return Color.gray;
         }
     }
 }

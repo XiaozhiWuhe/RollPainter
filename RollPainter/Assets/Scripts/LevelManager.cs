@@ -1,16 +1,19 @@
+using System.Linq;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public MiniGoalBoard miniGoalBoard;
+    public LevelCompleteAnimator completeAnimator;
+
+    public GameObject winUI;
+
+    public UIGoalBoard uiGoalBoard;
 
     public LevelDatabase levelDatabase;
 
     public GridGenerator gridGenerator;
 
     public GameObject cube;
-
-    public GameObject winUI;
 
     public TMPro.TextMeshProUGUI stepText;
 
@@ -34,7 +37,7 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel(int index)
     {
         CurrentLevelData = levelDatabase.levels[index];
-
+        CurrentLevelData.Initialize();
         LevelData data = CurrentLevelData;
 
         levelFinished = false;
@@ -45,13 +48,13 @@ public class LevelManager : MonoBehaviour
 
         UpdateStepUI();
 
-        gridGenerator.size = data.width;
+        gridGenerator.width = data.width;
+        gridGenerator.height = data.height;
 
         gridGenerator.Generate();
+        uiGoalBoard.Generate(data);
 
-        miniGoalBoard.Generate(data);
-
-        tiles = FindObjectsOfType<Tile>();
+        tiles = gridGenerator.tiles.Cast<Tile>().ToArray();
 
         foreach (Tile tile in tiles)
         {
@@ -112,13 +115,11 @@ public class LevelManager : MonoBehaviour
     {
         foreach (Tile tile in tiles)
         {
-            if (tile.targetColor != TileColor.None)
+            if (tile.targetColor != TileColor.None && tile.currentColor != tile.targetColor)
             {
-                if (tile.currentColor != tile.targetColor)
-                    return;
+                return;
             }
         }
-
         LevelComplete();
     }
 
@@ -126,8 +127,13 @@ public class LevelManager : MonoBehaviour
     {
         levelFinished = true;
 
-        winUI.SetActive(true);
+        StartCoroutine(
+            completeAnimator.Play(ShowWinUI)
+        );
+    }
 
-        cube.GetComponent<CubeRoll>().enabled = false;
+    void ShowWinUI()
+    {
+        winUI.SetActive(true);
     }
 }
