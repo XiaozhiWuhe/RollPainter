@@ -42,7 +42,11 @@ public class MiniGoalBoard : MonoBehaviour
         float offsetX = (data.width - 1) * cellSize / 2f;
         float offsetZ = (data.height - 1) * cellSize / 2f;
 
-        transform.localPosition -= new Vector3(offsetX, 0, offsetZ);
+        // 原来的写法（错误，会叠加偏移）
+        // transform.localPosition -= new Vector3(offsetX, 0, offsetZ);
+
+        // 正确写法（直接设置位置，每次都重置）
+        transform.localPosition = new Vector3(2, -3, 14);
     }
 
     void Clear()

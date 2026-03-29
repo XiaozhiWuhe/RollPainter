@@ -5,6 +5,7 @@ public class CameraController : MonoBehaviour
     public GridGenerator grid;
 
     public float heightMultiplier = 2f;
+    public float horizontalOffset = 1f;
 
     void Start()
     {
@@ -16,7 +17,7 @@ public class CameraController : MonoBehaviour
     {
         if (grid == null) return;
 
-        float centerX = (grid.size - 1) * grid.cellSize * 0.5f;
+        float centerX = (grid.size - 1) * grid.cellSize * 0.5f+horizontalOffset;
         float centerZ = (grid.size - 1) * grid.cellSize * 0.5f;
 
         float height = grid.size * heightMultiplier;
