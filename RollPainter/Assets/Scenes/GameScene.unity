@@ -932,6 +932,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 2068437447}
   heightMultiplier: 2
+--- !u!1 &391696380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 391696381}
+  - component: {fileID: 391696382}
+  m_Layer: 0
+  m_Name: miniGoalBoard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &391696381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391696380}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18, y: 0, z: 5}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &391696382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391696380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f773caf70418cd14fa4dbe125f04ec3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellSize: 0.2
+  defaultMaterial: {fileID: 2100000, guid: f2b419860e014374c9be270dbe041382, type: 2}
+  colorMaterials:
+  - {fileID: 2100000, guid: 7980b828558dcd04ba766ad3c91974a0, type: 2}
+  - {fileID: 2100000, guid: de4d64141e8bc4a4cbe1517fced99ce8, type: 2}
+  - {fileID: 2100000, guid: ff094e30ce7fac64b9d3141bd32485d2, type: 2}
+  - {fileID: 2100000, guid: 53d3fd964c76ab249a3799c26ff2b9c8, type: 2}
+  - {fileID: 2100000, guid: 8593747edad6447408d5770e33473bb6, type: 2}
+  - {fileID: 2100000, guid: 771363fadd3afc94e903183005a87e59, type: 2}
 --- !u!1 &403540025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2752,9 +2805,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1249789018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32110f26cac1d4c4ba48433fc1e78196, type: 3}
+  m_Script: {fileID: 11500000, guid: 95dd7710ab1e2164393e7389685fc490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cube: {fileID: 997324625}
 --- !u!43 &1298329672
 Mesh:
   m_ObjectHideFlags: 0
@@ -3246,6 +3300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd12c365bc9fc74e9719c56b8ef4d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miniGoalBoard: {fileID: 391696382}
   levelDatabase: {fileID: 11400000, guid: d458b6e28b3fca043a4cecea72a9ca2a, type: 2}
   gridGenerator: {fileID: 2068437447}
   cube: {fileID: 997324625}
@@ -3468,3 +3523,4 @@ SceneRoots:
   - {fileID: 1249789022}
   - {fileID: 504248700}
   - {fileID: 30329843}
+  - {fileID: 391696381}

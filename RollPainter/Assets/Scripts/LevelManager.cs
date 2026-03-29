@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public MiniGoalBoard miniGoalBoard;
+
     public LevelDatabase levelDatabase;
 
     public GridGenerator gridGenerator;
@@ -46,6 +48,8 @@ public class LevelManager : MonoBehaviour
         gridGenerator.size = data.width;
 
         gridGenerator.Generate();
+
+        miniGoalBoard.Generate(data);
 
         tiles = FindObjectsOfType<Tile>();
 

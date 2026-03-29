@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level_01
   m_EditorClassIdentifier: 
   levelName: 1
-  width: 5
-  height: 5
+  width: 7
+  height: 7
   startPosition: {x: 2, y: 2}
-  targetColors: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  targetColors: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff02000000ffffffffffffffffffffffffffffffffffffffff02000000ffffffff02000000ffffffffffffffffffffffff02000000ffffffff02000000ffffffff02000000ffffffffffffffffffffffff02000000ffffffff02000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
