@@ -1,11 +1,11 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class LevelManager : MonoBehaviour
 {
     public LevelCompleteAnimator completeAnimator;
-
-    public GameObject winUI;
 
     public UIGoalBoard uiGoalBoard;
 
@@ -69,8 +69,6 @@ public class LevelManager : MonoBehaviour
         cube.transform.position = startPos;
 
         cube.GetComponent<CubeRoll>().enabled = true;
-
-        winUI.SetActive(false);
     }
 
     public void AddStep()
@@ -125,15 +123,38 @@ public class LevelManager : MonoBehaviour
 
     void LevelComplete()
     {
+        if (levelFinished) return;
+
         levelFinished = true;
 
-        StartCoroutine(
-            completeAnimator.Play(ShowWinUI)
-        );
+        StartCoroutine(LevelCompleteSequence());
     }
 
-    void ShowWinUI()
+    public IEnumerator LevelCompleteSequence()
     {
-        winUI.SetActive(true);
+        levelFinished = true;
+
+        yield return StartCoroutine(
+            completeAnimator.Play(null)
+        );
+
+        yield return new WaitForSeconds(0.5f);
+
+        // 转场遮住屏幕
+        yield return StartCoroutine(
+            TransitionController.Instance.FadeIn()
+        );
+
+        // 显示结果
+        ResultUI.Instance.Show(stepCount);
+
+        yield return new WaitForSeconds(4f);
+
+        //// 再次转场
+        //yield return StartCoroutine(
+        //    TransitionController.Instance.FadeIn()
+        //);
+
+        SceneManager.LoadScene("LevelSelectScene");
     }
 }

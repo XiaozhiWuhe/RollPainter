@@ -16,4 +16,4 @@ MonoBehaviour:
   width: 3
   height: 3
   startPosition: {x: 0, y: 0}
-  targetColors: ffffffffffffffffffffffff030000000500000004000000000000000100000002000000
+  targetColors: ffffffffffffffffffffffffffffffff05000000ffffffffffffffffffffffffffffffff
